@@ -23,7 +23,7 @@ public class TicketMachine
      */
     public TicketMachine(int cost)
     {
-        price = cost;
+        price = price*2;
         balance = 0;
         total = 0;
     }
@@ -50,13 +50,24 @@ public class TicketMachine
      */
     public void insertMoney(int amount)
     {
-        if(amount > 0) {
+        if(amount <=0) {
+            System.out.println("Use a positive amount rather than: " + amount);        }
+        else {
             balance = balance + amount;
         }
+    }
+    /**
+     * 
+     */
+    public void affordable(int budget)
+    {
+        if(price > budget)
+            System.out.println("Too expensive: your budget is " + budget);
         else {
-            System.out.println("Use a positive amount rather than: " + amount);
+            System.out.println("Just right");
         }
     }
+    
 
     /**
      * Print a ticket if enough money has been inserted, and
@@ -96,4 +107,16 @@ public class TicketMachine
         balance = 0;
         return amountToRefund;
     }
-}
+    /**
+     * 
+     */
+    public int emptyMachine()
+{   
+    int amountEmptied = total;
+    total = 0;                 
+    return amountEmptied;      
+}    
+    }
+        
+
+   
